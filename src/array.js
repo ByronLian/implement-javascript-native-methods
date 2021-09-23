@@ -16,7 +16,7 @@ If the provided index is 0, then the whole array will be searched.
 */
 
 Array.prototype.myIndexOf = function (searchElement, fromIndex = 0) {
-  const _array = [...this];
+  const _array = this;
   const _len = _array.length;
 
   if (fromIndex >= _len) return -1;
