@@ -32,3 +32,35 @@ Array.prototype.myIndexOf = function (searchElement, fromIndex = 0) {
   }
   return -1;
 };
+
+/*
+map
+
+callbackFn
+Function that is called for every element of arr. 
+Each time callbackFn executes, the returned value is added to newArray.
+
+The callbackFn function accepts the following arguments:
+  element
+  The current element being processed in the array.
+
+  index (Optional)
+  The index of the current element being processed in the array.
+
+  array (Optional)
+  The array map was called upon.
+
+thisArg (Optional)
+Value to use as this when executing callbackFn.
+*/
+
+Array.prototype.myMap = function (callbackFn, thisArg = window) {
+  const _array = this;
+  const _len = _array.length;
+  const newArray = [];
+
+  for (let i = 0; i < _len; i++) {
+    newArray.push(callbackFn.call(thisArg, _array[i], i, _array));
+  }
+  return newArray;
+};
