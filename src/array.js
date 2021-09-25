@@ -64,3 +64,35 @@ Array.prototype.myMap = function (callbackFn, thisArg = window) {
   }
   return newArray;
 };
+
+/*
+filter
+
+callbackFn
+Function is a predicate, to test each element of the array.
+Return a value that coerces to true to keep the element, or to false otherwise.
+
+It accepts three arguments:
+  element
+  The current element being processed in the array.
+
+  index (Optional)
+  The index of the current element being processed in the array.
+
+  array (Optional)
+  The array filter was called upon.
+
+thisArg (Optional)
+Value to use as this when executing callbackFn.
+*/
+
+Array.prototype.myFilter = function (callbackFn, thisArg = window) {
+  const _array = this;
+  const _len = _array.length;
+  const newArray = [];
+
+  for (let i = 0; i < _len; i++) {
+    if (callbackFn.call(thisArg, _array[i], i, _array)) newArray.push(_array[i]);
+  }
+  return newArray;
+};
