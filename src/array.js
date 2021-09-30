@@ -132,3 +132,45 @@ Array.prototype.mySlice = function (begin = 0, end = this.length) {
 
   return newArray;
 };
+
+/*
+every
+*/
+
+Array.prototype.myEvery = function (callbackFn, thisArg = window) {
+  const _array = this;
+  const _len = _array.length;
+
+  for (let i = 0; i < _len; i++) {
+    if (callbackFn.call(thisArg, _array[i], i, _array) === false) return false;
+  }
+
+  return true;
+};
+
+/*
+fill
+
+If start is negative, it is treated as array.length + start.
+If end is negative, it is treated as array.length + end.
+fill is intentionally generic: it does not require that its this value be an Array object.
+fill is a mutator method: it will change the array itself and return it, not a copy of it.
+If the first parameter is an object, each slot in the array will reference that object.
+*/
+
+Array.prototype.myFill = function (value, start = 0, end = this.length) {
+  const _array = this;
+  const _len = _array.length;
+
+  if (start > _len) return _array;
+
+  const startOffset = start < 0 ? start + _len : start;
+  let endOffset = end < 0 ? end + _len : end;
+  if (end > _len) endOffset = _len;
+
+  for (let i = startOffset; i < endOffset; i++) {
+    _array[i] = value;
+  }
+
+  return _array;
+};
